@@ -34,8 +34,10 @@ def blendNovel(file1, file2):
     #combine models thus combining texts
     combinedmod = markovify.combine([novel_model1, novel_model2])
 
-    #print number of sentences
-    for i in range(10):
+
+    #create number of sentences
+    storyLength = int(input("How many sentences would you like your story to be? "))
+    for i in range(storyLength):
         story += str((combinedmod.make_sentence(tries=200))) + " "
 
         #randomly gen linebreaks
