@@ -54,7 +54,25 @@ def saveToPdf(text):
 def main():
     #user input text1, text2
     novel = blendNovel("SherlockHolmes.txt", "AliceInWonderland.txt")
-    saveToPdf(novel)
+
+    #check if the user wants to save file
+    while True:
+        saveornot = input(str("Would you like to save this file as a pdf? [Y/N] "))
+        saveornot = saveornot.lower().strip()
+        try:
+            if (saveornot == "yes") or (saveornot == "y"):
+                saveToPdf(novel)
+                return
+            elif (saveornot == "no") or (saveornot == "n"):
+                print("Thank you.")
+                return
+            else:
+                raise ValueError
+
+        except ValueError:
+            print("Invalid Response.")
+
+
 
 
 
