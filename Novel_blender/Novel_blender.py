@@ -45,10 +45,10 @@ def blendNovel(file1, file2):
 def saveToPdf(text):
     #get user inputted file name and cocatenate file extension
     filename = input(str("Save file name as: "))
-    filename = filename + ".txt"
+    filename = filename + ".pdf"
 
     pdf = canvas.Canvas(filename)
-    pdf.drawString(5, 200, text)
+    pdf.drawString(150, 200, text)
     pdf.save()
     
 def main():
