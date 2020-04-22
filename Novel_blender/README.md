@@ -6,8 +6,10 @@ This was inspired by Zach Whalen's NanoGenMo Challenge Markovify code - https://
 
 To run this program, you'll need:
 
--Python 3+
--Random
--Markovify
--Reportlab
--Tkinter
+<ul>
+<li>Python 3+</li>
+<li>Random</li>
+<li>Markovify</li>
+<li>Reportlab</li>
+<li>Tkinter</li>
+</ul>
