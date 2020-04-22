@@ -1,4 +1,4 @@
-#Novel Blender Generator
+<h2>Novel Blender Generator</h2>
 
 Hi there! With this program you can pick .txt files to "blend" together using a markov chain to make a whacky new story!
 
