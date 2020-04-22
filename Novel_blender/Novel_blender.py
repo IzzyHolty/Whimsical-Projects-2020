@@ -4,13 +4,16 @@ import random
 import markovify
 import reportlab
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Paragraph
 
 #TO DO
 #Create a GUI for users to select files from their computer and customise
 #Customise length of output by making range(5) a user inputted variable
-#Customise "Strength" of both texts by assinging variable pairs that are placed as an arguement for combined model function
-#Customise save as with pdf and txt options, asks user to use pdf, docx or txt extensions
-#Customise file name
+#Customise "Strength" of both texts by assigning variable pairs that are placed as an arguement for combined model function
+#Customise save as with pdf and txt options, asks user to use txt
 #Customise amount of docs you can use
 
 def blendNovel(file1, file2):
@@ -47,9 +50,35 @@ def saveToPdf(text):
     filename = input(str("Save file name as: "))
     filename = filename + ".pdf"
 
-    pdf = canvas.Canvas(filename)
-    pdf.drawString(150, 200, text)
-    pdf.save()
+    #grabs styles
+    styles = getSampleStyleSheet()
+    styleN = styles['Normal']
+    styleH = styles['Heading1']
+    content = []
+
+    #set file name
+    pdf = filename
+
+    #set document parameters
+    doc = SimpleDocTemplate(
+        pdf,
+        pagesize=A4,
+        bottomMargin=.4 * inch,
+        topMargin=.6 * inch,
+        rightMargin=.8 * inch,
+        leftMargin=.8 * inch)
+
+    #create header
+    title = input(str("Name your story: "))
+    Header = Paragraph(title, styleH)
+    content.append(Header)
+
+    #create flowable paragraph with the text and add to variable that can be stored in document
+    P = Paragraph(text, styleN)
+    content.append(P)
+
+    #build document and save
+    doc.build(content)
     
 def main():
     #user input text1, text2
@@ -60,7 +89,7 @@ def main():
         saveornot = input(str("Would you like to save this file as a pdf? [Y/N] "))
         saveornot = saveornot.lower().strip()
         try:
-            if (saveornot == "yes") or (saveornot == "y"):
+            if (saveornot == "yes") or (saveornot == "y") or (saveornot == "ye") or (saveornot == "yeet"):
                 saveToPdf(novel)
                 return
             elif (saveornot == "no") or (saveornot == "n"):
