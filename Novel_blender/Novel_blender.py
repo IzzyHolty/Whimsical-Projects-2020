@@ -19,6 +19,14 @@ from tkinter import filedialog
 #Customise amount of docs you can use, blendNovel can have optional parameter arguments to achieve this
 #BUTTONS NEEDED = Save as, Open file buttons, *(strength slider), run INPUTS NEEDED = title, sentence number, strength slider
 
+#global file variables to easily retrieve file paths in GUI
+firstfile = " "
+secondfile = " "
+thirdfile = " "
+fourthfile = " "
+
+files = [firstfile, secondfile, thirdfile, fourthfile]
+
 def blendNovel(file1, file2):
     
     story = " "
@@ -110,10 +118,9 @@ def saveButton():
     print("Save the cat!")
 
 #open file button
-def openFile():
-    filename = filedialog.askopenfile()
-    filelabel = Label(text=filename).pack()
-    return filename
+def openFile(filenum):
+    filename = filedialog.askopenfilename()
+    files[filenum] = filename
         
 #create the GUI, lel this code is a hot mess
 def createGUI():
@@ -127,8 +134,18 @@ def createGUI():
     #rendering buttons
     program = Label(root, text="Novel Blender 1.0").pack(side=TOP)
     save = Button(root, text="Generate!", command=saveButton).pack(side = BOTTOM, pady = 10)
-    openf = Button(root, text="Open File", command=openFile).pack(pady = 20)
+
+    #open file button 1
+    openf = Button(root, text="Open File", command=lambda: openFile(0)).pack(pady = 20)
+    file1label = Label(text=firstfile).pack()
+
+    #open file button 2
     openf2 = Button(root, text="Open File", command=openFile).pack(pady = 20)
+
+    #open file button 3
+
+
+    #open file button 4
 
 
     #run window
