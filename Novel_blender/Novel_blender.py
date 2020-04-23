@@ -8,13 +8,14 @@ from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph
+from tkinter import *
 
 #TO DO
 #Create a GUI for users to select files from their computer and customise
-#Customise length of output by making range(5) a user inputted variable
-#Customise "Strength" of both texts by assigning variable pairs that are placed as an arguement for combined model function
-#Customise save as with pdf and txt options, asks user to use txt
-#Customise amount of docs you can use
+#All user inputs must become integrated into GUI, leaning towards tkinter because mobile compatibility isn't neccessary + kivy doesn't support ios packaged past py 2.7
+#Customise "Strength" of both texts by assigning variable pairs that are placed as an arguement for combined model function, i.e. (1, 1.5), (0.5, 1) etc.
+#Customise amount of docs you can use, blendNovel can have optional parameter arguments to achieve this
+#BUTTONS NEEDED = Save as, Open file buttons, *(strength slider), run INPUTS NEEDED = title, sentence number, strength slider
 
 def blendNovel(file1, file2):
     
@@ -81,18 +82,15 @@ def saveToPdf(text):
 
     #build document and save
     doc.build(content)
-    
-def main():
-    #user input text1, text2
-    novel = blendNovel("SherlockHolmes.txt", "AliceInWonderland.txt")
 
-    #check if the user wants to save file
+#checks if user wants to save or not
+def saveQuery(story):
     while True:
         saveornot = input(str("Would you like to save this file as a pdf? [Y/N] "))
         saveornot = saveornot.lower().strip()
         try:
             if (saveornot == "yes") or (saveornot == "y") or (saveornot == "ye") or (saveornot == "yeet"):
-                saveToPdf(novel)
+                saveToPdf(story)
                 return
             elif (saveornot == "no") or (saveornot == "n"):
                 print("Thank you.")
@@ -103,7 +101,32 @@ def main():
         except ValueError:
             print("Invalid Response.")
 
+#make save button functional
+def saveButton():
+    
+    
+#create the GUI, lel this code is a hot mess
+def createGUI():
+    #create window
+    root = Tk()
+    root.geometry('300x300')
 
+    program = Label(root, text="Novel Blender 1.0")
+    program.pack()
+
+    saveButton = Button(root, text="Save as")
+    saveButton.pack()
+
+    #run window
+    root.mainloop()
+
+def main():
+    #user input text1, text2
+    #novel = blendNovel("SherlockHolmes.txt", "AliceInWonderland.txt")
+
+    #saveQuery(novel)
+    
+    createGUI()
 
 
 
