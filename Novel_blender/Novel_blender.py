@@ -14,7 +14,7 @@ from tkinter import filedialog
 
 #TO DO
 #Create a GUI for users to select files from their computer and customise
-#All user inputs must become integrated into GUI, leaning towards tkinter because mobile compatibility isn't neccessary + kivy doesn't support ios packaged past py 2.7
+#Put GUI buttons and stuff on a grid
 #Customise "Strength" of both texts by assigning variable pairs that are placed as an arguement for combined model function, i.e. (1, 1.5), (0.5, 1) etc.
 #Customise amount of docs you can use, blendNovel can have optional parameter arguments to achieve this
 #BUTTONS NEEDED = Save as, Open file buttons, *(strength slider), run INPUTS NEEDED = title, sentence number, strength slider
@@ -136,11 +136,12 @@ def createGUI():
     save = Button(root, text="Generate!", command=saveButton).pack(side = BOTTOM, pady = 10)
 
     #open file button 1
-    openf = Button(root, text="Open File", command=lambda: openFile(0)).pack(pady = 20)
-    file1label = Label(text=firstfile).pack()
+    openf = Button(root, text="Open File", command=lambda: openFile(0))
+    openf.pack(pady = 20)
+    print(firstfile)
 
     #open file button 2
-    openf2 = Button(root, text="Open File", command=openFile).pack(pady = 20)
+    openf2 = Button(root, text="Open File", command=lambda: openFile(1)).pack(pady = 20)
 
     #open file button 3
 
