@@ -101,21 +101,23 @@ def saveQuery(story):
         except ValueError:
             print("Invalid Response.")
 
+
+
 #make save button functional
 def saveButton():
-    
-    
+    print("Save the cat!")
+        
 #create the GUI, lel this code is a hot mess
 def createGUI():
+
     #create window
     root = Tk()
-    root.geometry('300x300')
+    root.geometry('400x400')
+    root.title("Novel Blender")
 
-    program = Label(root, text="Novel Blender 1.0")
-    program.pack()
+    program = Label(root, text="Novel Blender 1.0").pack(side=TOP)
+    save = Button(root, text="Save as", command=saveButton).pack()
 
-    saveButton = Button(root, text="Save as")
-    saveButton.pack()
 
     #run window
     root.mainloop()
