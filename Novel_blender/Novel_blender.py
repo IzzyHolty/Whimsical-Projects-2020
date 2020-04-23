@@ -112,6 +112,7 @@ def saveButton():
 #open file button
 def openFile():
     filename = filedialog.askopenfile()
+    filelabel = Label(text=filename).pack()
     return filename
         
 #create the GUI, lel this code is a hot mess
