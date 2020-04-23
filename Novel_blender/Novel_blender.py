@@ -9,6 +9,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from tkinter import *
+from tkinter import ttk
+from tkinter import filedialog
 
 #TO DO
 #Create a GUI for users to select files from their computer and customise
@@ -106,6 +108,11 @@ def saveQuery(story):
 #make save button functional
 def saveButton():
     print("Save the cat!")
+
+#open file button
+def openFile():
+    filename = filedialog.askopenfile()
+    return filename
         
 #create the GUI, lel this code is a hot mess
 def createGUI():
@@ -114,9 +121,13 @@ def createGUI():
     root = Tk()
     root.geometry('400x400')
     root.title("Novel Blender")
+    root.wm_iconbitmap("icon.ico")
 
+    #rendering buttons
     program = Label(root, text="Novel Blender 1.0").pack(side=TOP)
-    save = Button(root, text="Save as", command=saveButton).pack()
+    save = Button(root, text="Generate!", command=saveButton).pack(side = BOTTOM, pady = 10)
+    openf = Button(root, text="Open File", command=openFile).pack(pady = 20)
+    openf2 = Button(root, text="Open File", command=openFile).pack(pady = 20)
 
 
     #run window
