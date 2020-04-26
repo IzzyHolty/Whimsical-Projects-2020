@@ -20,10 +20,10 @@ from tkinter import filedialog
 #BUTTONS NEEDED = Save as, Open file buttons, *(strength slider), run INPUTS NEEDED = title, sentence number, strength slider
 
 #global file variables to easily retrieve file paths in GUI
-firstfile = " "
-secondfile = " "
-thirdfile = " "
-fourthfile = " "
+firstfile = None
+secondfile = None
+thirdfile = None
+fourthfile = None
 
 files = [firstfile, secondfile, thirdfile, fourthfile]
 
@@ -117,10 +117,6 @@ def saveQuery(story):
 def saveButton():
     print("Save the cat!")
 
-#open file button
-def openFile(filenum):
-    filename = filedialog.askopenfilename()
-    files[filenum] = filename
         
 #create the GUI, lel this code is a hot mess
 def createGUI():
@@ -131,6 +127,12 @@ def createGUI():
     root.title("Novel Blender")
     root.wm_iconbitmap("icon.ico")
 
+    #open file button
+    def openFile(filenum):
+        filename = str(filedialog.askopenfilename())
+        files[filenum] = filename
+        filelabel = Label(root, text=files[filenum], font=("Helvetica", 6)).pack()
+
     #rendering buttons
     program = Label(root, text="Novel Blender 1.0").pack(side=TOP)
     save = Button(root, text="Generate!", command=saveButton).pack(side = BOTTOM, pady = 10)
@@ -138,10 +140,10 @@ def createGUI():
     #open file button 1
     openf = Button(root, text="Open File", command=lambda: openFile(0))
     openf.pack(pady = 20)
-    print(firstfile)
-
+        
     #open file button 2
-    openf2 = Button(root, text="Open File", command=lambda: openFile(1)).pack(pady = 20)
+    openf2 = Button(root, text="Open File", command=lambda: openFile(1))
+    openf2.pack(pady = 20)
 
     #open file button 3
 
